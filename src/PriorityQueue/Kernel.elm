@@ -36,6 +36,8 @@ type PriorityQueue a
 
 
 {-| Determines the priority of an element.
+
+Lower values correspond to higher priority and vice versa.
 -}
 type alias Priority a =
     a -> Int

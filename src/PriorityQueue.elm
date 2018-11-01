@@ -51,7 +51,7 @@ type alias PriorityQueue a =
 
 {-| A function that assigns a priority to elements.
 
-Higher values correspond to higher priority.
+Lower values correspond to higher priority.
 
 -}
 type alias Priority a =
