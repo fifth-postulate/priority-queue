@@ -4,9 +4,6 @@
     "summary": "a priority queue for Elm.",
     "license": "MIT",
     "version": "1.0.0",
-    "source-directories": [
-        "src"
-    ],
     "exposed-modules": [
         "PriorityQueue"
     ],
@@ -15,5 +12,9 @@
         "elm/core": "1.0.0 <= v < 2.0.0"
     },
     "test-dependencies": {
-    }
+        "elm-explorations/test": "1.1.0 <= v < 2.0.0"
+    },
+    "source-directories": [
+        "src"
+    ]
 }
