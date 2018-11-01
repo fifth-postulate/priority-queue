@@ -77,7 +77,7 @@ insert element queue =
 Must be given a `priority` function, i.e. a function that assigns the priority to elements.
 
 -}
-fromList : (a -> Int) -> List a -> PriorityQueue a
+fromList : Priority a -> List a -> PriorityQueue a
 fromList priority elements =
     let
         emptyQueue =
