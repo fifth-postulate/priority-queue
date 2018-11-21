@@ -38,6 +38,7 @@ type PriorityQueue a
 {-| Determines the priority of an element.
 
 Lower values correspond to higher priority and vice versa.
+
 -}
 type alias Priority a =
     a -> Int
@@ -66,7 +67,7 @@ insert element (PriorityQueue { priority, tree }) =
 
 {-| Determine if a `PriorityQueue` is empty.
 -}
-isEmpty: PriorityQueue a -> Bool
+isEmpty : PriorityQueue a -> Bool
 isEmpty (PriorityQueue { tree }) =
     case tree of
         Empty ->
@@ -78,26 +79,33 @@ isEmpty (PriorityQueue { tree }) =
 
 {-| Return the element of the `PriorityQueue` with the highest priority.
 
-Returns `Nothing` when the queue is empty. -}
-head: PriorityQueue a -> Maybe a
+Returns `Nothing` when the queue is empty.
+
+-}
+head : PriorityQueue a -> Maybe a
 head (PriorityQueue { tree }) =
     case tree of
-        Empty -> Nothing
+        Empty ->
+            Nothing
 
-        Node _ element _ _ -> Just element
+        Node _ element _ _ ->
+            Just element
 
-{-| Return the `PriorityQueue` that remains when the head is removed. -}
-tail: PriorityQueue a -> PriorityQueue a
+
+{-| Return the `PriorityQueue` that remains when the head is removed.
+-}
+tail : PriorityQueue a -> PriorityQueue a
 tail ((PriorityQueue { priority, tree }) as queue) =
     case tree of
         Empty ->
-           queue
+            queue
 
         Node _ _ a b ->
             let
-                merged = merge priority a b
+                merged =
+                    merge priority a b
             in
-                PriorityQueue { priority = priority, tree = merged }
+            PriorityQueue { priority = priority, tree = merged }
 
 
 {-| heap-ordered binary tree with the _leftist property_
