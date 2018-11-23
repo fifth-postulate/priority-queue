@@ -1,7 +1,7 @@
 module PriorityQueue exposing
     ( PriorityQueue, Priority
     , empty, insert, fromList
-    , head, tail
+    , head, tail, take, drop, isEmpty
     , toList
     )
 
@@ -31,7 +31,7 @@ Throughout this package `priority` will mean a function that assigns a integer v
 
 # Query
 
-@docs head, tail
+@docs head, tail, take, drop, isEmpty
 
 
 # Conversion
@@ -101,6 +101,50 @@ head queue =
 tail : PriorityQueue a -> PriorityQueue a
 tail queue =
     Kernel.tail queue
+
+
+{-| Return the first `n` elements of the `PriorityQueue` with the highest priority
+-}
+take : Int -> PriorityQueue a -> List a
+take n queue =
+    tailCallTake [] n queue
+
+
+{-| tail call variant of take
+-}
+tailCallTake : List a -> Int -> PriorityQueue a -> List a
+tailCallTake accumulator n queue =
+    if n <= 0 then
+        List.reverse accumulator
+
+    else
+        case head queue of
+            Just value ->
+                tailCallTake (value :: accumulator) (n - 1) (tail queue)
+
+            Nothing ->
+                List.reverse accumulator
+
+
+{-| Returns a new `PriorityQueue` with the first `n` elements dropped.
+-}
+drop : Int -> PriorityQueue a -> PriorityQueue a
+drop n queue =
+    if n <= 0 || isEmpty queue then
+        queue
+
+    else
+        drop (n - 1) (tail queue)
+
+
+{-| Determine if the `PriorityQueue` is empty.
+-}
+isEmpty : PriorityQueue a -> Bool
+isEmpty queue =
+    queue
+        |> head
+        |> Maybe.map (\_ -> False)
+        |> Maybe.withDefault True
 
 
 {-| Returns all the elements in a `PriorityQueue` as a `List`.
