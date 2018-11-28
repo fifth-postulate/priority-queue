@@ -51,12 +51,13 @@ suite =
                                 |> PriorityQueue.toList
 
                         expected =
-                            [1]
+                            [ 1 ]
                     in
-                        Expect.all [
-                             \_ -> Expect.false "should not be empty" <| PriorityQueue.isEmpty queue,
-                             \_ -> Expect.equal actual expected
-                            ] ()
+                    Expect.all
+                        [ \_ -> Expect.false "should not be empty" <| PriorityQueue.isEmpty queue
+                        , \_ -> Expect.equal actual expected
+                        ]
+                        ()
             , fuzz (list int) "high priority elements before low priority" <|
                 \aList ->
                     let
