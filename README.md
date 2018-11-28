@@ -1,4 +1,4 @@
-# priority-queue
+# priority-queue[![Build Status](https://travis-ci.org/HAN-ASD-DT/priority-queue.svg?branch=master)](https://travis-ci.org/HAN-ASD-DT/priority-queue)
 A priority queue for Elm.
 
 A [*priority queue*][priority-queue] is an
