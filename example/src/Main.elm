@@ -187,16 +187,40 @@ viewSvg ds =
                 [ cx px
                 , cy py
                 , r "5"
+                , fill <| fillColor name
                 ]
                 []
             , text_ [ x px, y py, strokeWidth "0.3", fill "black" ] [ text (String.fromChar name) ]
             ]
 
+        fillColor v =
+            if Set.member v ds.visited then
+                "red"
+            else if isJust (PriorityQueue.head ds.toVisit) then
+                PriorityQueue.head ds.toVisit
+                    |> Maybe.map (\(u, _, _) -> u)
+                    |> Maybe.andThen (\h -> if h == v then Just "gray" else Nothing)
+                    |> Maybe.withDefault "white"
+            else if v == ds.to then
+                "blue"
+            else if v == ds.from then
+                "yellow"
+            else
+                "white"
+
         vertices =
             ds.positions
                 |> Dict.toList
                 |> List.concatMap toVertex
+
     in
     Svg.svg [ width "640", height "640", viewBox "-50 -50 100 100" ]
         [ g [ stroke "black", fill "white", fontSize "5" ] vertices
         ]
+
+isJust : Maybe a -> Bool
+isJust m =
+    case m of
+        Just _ -> True
+
+        Nothing -> False
