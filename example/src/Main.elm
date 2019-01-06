@@ -176,8 +176,18 @@ view model =
 viewSvg : Dijkstra -> Svg msg
 viewSvg ds =
     Svg.svg [ width "640", height "640", viewBox "-50 -50 100 100" ]
-        [ verticesToSvg ds
+        [ edgesToSvg ds
+        , verticesToSvg ds
         ]
+
+
+edgesToSvg : Dijkstra -> Svg msg
+edgesToSvg ds =
+    let
+        edges =
+            []
+    in
+    g [ stroke "black", fill "white", fontSize "5" ] edges
 
 
 verticesToSvg : Dijkstra -> Svg msg
