@@ -175,6 +175,13 @@ view model =
 
 viewSvg : Dijkstra -> Svg msg
 viewSvg ds =
+    Svg.svg [ width "640", height "640", viewBox "-50 -50 100 100" ]
+        [ verticesToSvg ds
+        ]
+
+
+verticesToSvg : Dijkstra -> Svg msg
+verticesToSvg ds =
     let
         toVertex ( name, position ) =
             let
@@ -225,9 +232,7 @@ viewSvg ds =
                 |> Dict.toList
                 |> List.concatMap toVertex
     in
-    Svg.svg [ width "640", height "640", viewBox "-50 -50 100 100" ]
-        [ g [ stroke "black", fill "white", fontSize "5" ] vertices
-        ]
+    g [ stroke "black", fill "white", fontSize "5" ] vertices
 
 
 isJust : Maybe a -> Bool
