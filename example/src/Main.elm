@@ -31,12 +31,13 @@ main =
 
         onCircle i =
             let
-                r = 40.0
+                r =
+                    40.0
 
-                angle = 2*pi / 5.0
+                angle =
+                    2 * pi / 5.0
             in
-            (r * cos (i * angle), r * sin (i * angle))
-
+            ( r * cos (i * angle), r * sin (i * angle) )
 
         positions =
             Dict.empty
@@ -196,15 +197,26 @@ viewSvg ds =
         fillColor v =
             if Set.member v ds.visited then
                 "red"
+
             else if isJust (PriorityQueue.head ds.toVisit) then
                 PriorityQueue.head ds.toVisit
-                    |> Maybe.map (\(u, _, _) -> u)
-                    |> Maybe.andThen (\h -> if h == v then Just "gray" else Nothing)
+                    |> Maybe.map (\( u, _, _ ) -> u)
+                    |> Maybe.andThen
+                        (\h ->
+                            if h == v then
+                                Just "gray"
+
+                            else
+                                Nothing
+                        )
                     |> Maybe.withDefault "white"
+
             else if v == ds.to then
                 "blue"
+
             else if v == ds.from then
                 "yellow"
+
             else
                 "white"
 
@@ -212,15 +224,17 @@ viewSvg ds =
             ds.positions
                 |> Dict.toList
                 |> List.concatMap toVertex
-
     in
     Svg.svg [ width "640", height "640", viewBox "-50 -50 100 100" ]
         [ g [ stroke "black", fill "white", fontSize "5" ] vertices
         ]
 
+
 isJust : Maybe a -> Bool
 isJust m =
     case m of
-        Just _ -> True
+        Just _ ->
+            True
 
-        Nothing -> False
+        Nothing ->
+            False
