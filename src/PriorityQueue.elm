@@ -141,10 +141,7 @@ drop n queue =
 -}
 isEmpty : PriorityQueue a -> Bool
 isEmpty queue =
-    queue
-        |> head
-        |> Maybe.map (\_ -> False)
-        |> Maybe.withDefault True
+    Kernel.isEmpty queue
 
 
 {-| Returns all the elements in a `PriorityQueue` as a `List`.

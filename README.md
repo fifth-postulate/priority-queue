@@ -15,9 +15,9 @@ elm install HAN-ASD-DT/priority-queue
 ```
 
 ## Usage
-The documentation for the `priority-queue` package can be found [online][documentation]. Below you can read a how a `PriorityQueue` can be used.
+The documentation for the `priority-queue` package can be found [online][documentation]. Below you can read how a `PriorityQueue` can be used.
 
-Let's say that for a artistic painting application you are maintaining a queue of rectangles to paint. The rectangles come in over a port and you want to paint larger, i.e. rectangles with a larger **area**, first. A priority queue helps in this scenario.
+Let's say that for an artistic painting application you are maintaining a queue of rectangles to paint. The rectangles come in over a port and you want to paint larger, i.e. rectangles with a larger **area**, first. A priority queue helps in this scenario.
 
 To create a queue you could use the `PriorityQueue.empty` function. It accepts a `Priority`, i.e. a function that assigns priority to elements. Note that lower values corresponds to higher priority. Think of the priority as the time you would be willing to wait before you would like to process the element.
 
