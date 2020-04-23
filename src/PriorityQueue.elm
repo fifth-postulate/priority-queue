@@ -55,18 +55,18 @@ Must be given a `priority` function, i.e. a function that assigns the priority t
 
 Say we want to process rectangles, making sure to process rectangles with bigger area first
 
-    type alias Rectangle = 
-        { width: Int
-        , height: Int
+    type alias Rectangle =
+        { width : Int
+        , height : Int
         }
-    
+
     area : Rectangle -> Int
     area { width, height } =
         width * height
 
 If we wanted to create a queue of rectangles, where higher priority is awarded to rectangles with a bigger area the following code would create the queue.
 
-    queue: PriorityQueue Rectangle
+    queue : PriorityQueue Rectangle
     queue =
         let
             priority =
@@ -75,6 +75,7 @@ If we wanted to create a queue of rectangles, where higher priority is awarded t
         empty priority
 
 Note that the area is negated to give higher priority to rectangles with bigger area.
+
 -}
 empty : (a -> Int) -> PriorityQueue a
 empty priority =
@@ -85,11 +86,12 @@ empty priority =
 
     let
         --- a nice rectangle
-        rectangle = 
+        rectangle =
             { width = 5, height = 3 }
     in
     queue
         |> insert rectangle
+
 -}
 insert : a -> PriorityQueue a -> PriorityQueue a
 insert element queue =
@@ -109,7 +111,7 @@ Assume again that rectangles with bigger area have higher priority, the followin
         , { width = 2, height = 4 }
         ]
 
-    queue: PriorityQueue Rectangle
+    queue : PriorityQueue Rectangle
     queue =
         let
             priority =
@@ -118,6 +120,7 @@ Assume again that rectangles with bigger area have higher priority, the followin
         fromList priority rectangles
 
 Note that the area is negated to give higher priority to rectangles with bigger area.
+
 -}
 fromList : (a -> Int) -> List a -> PriorityQueue a
 fromList priority elements =
@@ -140,6 +143,7 @@ Returns `Nothing` when the queue is empty.
 
     empty (area >> negate)
         |> head     --- Nothing
+
 -}
 head : PriorityQueue a -> Maybe a
 head queue =
@@ -155,6 +159,7 @@ head queue =
         |> tail
 
 would leave a priority queue that contains the rectangles `{ width = 1, height = 1 }` and `{ width = 2, height 2 }`.
+
 -}
 tail : PriorityQueue a -> PriorityQueue a
 tail queue =
@@ -168,6 +173,7 @@ tail queue =
         |> insert { width = 5, height = 3 }
         |> insert { width = 2, height = 2 }
         |> take 2   -- [ { width = 5, height = 3 }, { width = 2, heigh = 2 }]
+
 -}
 take : Int -> PriorityQueue a -> List a
 take n queue =
@@ -199,6 +205,7 @@ tailCallTake accumulator n queue =
         |> drop 2
 
 would leave a priority queue that only contains the rectangle `{ width = 1, height = 1 }`.
+
 -}
 drop : Int -> PriorityQueue a -> PriorityQueue a
 drop n queue =
@@ -224,7 +231,8 @@ The order will be determined by the priority, higher priority elements before lo
         |> insert { width = 1, height = 1 }
         |> insert { width = 5, height = 3 }
         |> insert { width = 2, height = 2 }
-        |> toList   --- [ { width = 5, height = 3 }, { width = 2, height = 2 }, { width = 1, height = 1 } ] 
+        |> toList   --- [ { width = 5, height = 3 }, { width = 2, height = 2 }, { width = 1, height = 1 } ]
+
 -}
 toList : PriorityQueue a -> List a
 toList queue =
