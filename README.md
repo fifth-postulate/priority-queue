@@ -1,4 +1,4 @@
-# priority-queue[![Build Status](https://travis-ci.org/HAN-ASD-DT/priority-queue.svg?branch=master)](https://travis-ci.org/HAN-ASD-DT/priority-queue)
+# priority-queue[![Build Status](https://travis-ci.org/fifth-postulate/priority-queue.svg?branch=master)](https://travis-ci.org/fifth-postulate/priority-queue)
 A priority queue for Elm.
 
 A [*priority queue*][priority-queue] is an
@@ -8,10 +8,10 @@ A [*priority queue*][priority-queue] is an
 The implementation we provide here is based on Okasaki's *leftist heaps*. See [Purely Functional Data Structures][pfds] for more information.
 
 ## Installation
-Install `HAN-ASD-DT/priority-queue` with the following command
+Install `fifth-postulate/priority-queue` with the following command
 
 ```sh
-elm install HAN-ASD-DT/priority-queue
+elm install fifth-postulate/priority-queue
 ```
 
 ## Usage
@@ -61,4 +61,4 @@ The `tail` function returns a priority queue of the remaining elements.
 [queue]: https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
 [stack]: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
 [pfds]: https://www.cs.cmu.edu/~rwh/theses/okasaki.pdf
-[documentation]: https://package.elm-lang.org/packages/HAN-ASD-DT/priority-queue/latest/
+[documentation]: https://package.elm-lang.org/packages/fifth-postulate/priority-queue/latest/

@@ -1,9 +1,9 @@
 {
     "type": "package",
-    "name": "HAN-ASD-DT/priority-queue",
+    "name": "fifth-postulate/priority-queue",
     "summary": "a priority queue for Elm.",
     "license": "MIT",
-    "version": "2.1.1",
+    "version": "1.0.0",
     "exposed-modules": [
         "PriorityQueue"
     ],
