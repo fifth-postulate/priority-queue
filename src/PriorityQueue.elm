@@ -85,7 +85,7 @@ empty priority =
 {-| Insert an element into the `PriorityQueue`
 
     let
-        --- a nice rectangle
+        -- a nice rectangle
         rectangle =
             { width = 5, height = 3 }
     in
@@ -137,12 +137,12 @@ fromList priority elements =
         |> insert { width = 1, height = 1 }
         |> insert { width = 5, height = 3 }
         |> insert { width = 2, height = 2 }
-        |> head     --- Just { width = 5, height = 3 }
+        |> head     -- Just { width = 5, height = 3 }
 
 Returns `Nothing` when the queue is empty.
 
     empty (area >> negate)
-        |> head     --- Nothing
+        |> head     -- Nothing
 
 -}
 head : PriorityQueue a -> Maybe a
@@ -231,7 +231,7 @@ The order will be determined by the priority, higher priority elements before lo
         |> insert { width = 1, height = 1 }
         |> insert { width = 5, height = 3 }
         |> insert { width = 2, height = 2 }
-        |> toList   --- [ { width = 5, height = 3 }, { width = 2, height = 2 }, { width = 1, height = 1 } ]
+        |> toList   -- [ { width = 5, height = 3 }, { width = 2, height = 2 }, { width = 1, height = 1 } ]
 
 -}
 toList : PriorityQueue a -> List a
