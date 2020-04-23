@@ -1,5 +1,5 @@
 module PriorityQueue exposing
-    ( PriorityQueue, Priority
+    ( PriorityQueue
     , empty, insert, fromList
     , head, tail, take, drop, isEmpty
     , toList
@@ -16,12 +16,12 @@ The implementation we provide here is based on Okasaki's _leftist heaps_. See [P
 
 # Priority
 
-Throughout this package `priority` will mean a function that assigns a integer value to an element. Lower values indicate higher priority and vice versa.
+Throughout this package `priority` will mean a function `a -> Int` that assigns a integer value to an element. Lower values indicate higher priority and vice versa.
 
 
 # Types
 
-@docs PriorityQueue, Priority
+@docs PriorityQueue
 
 
 # Building
@@ -49,18 +49,9 @@ type alias PriorityQueue a =
     Kernel.PriorityQueue a
 
 
-{-| A function that assigns a priority to elements.
-
-Lower values correspond to higher priority.
-
--}
-type alias Priority a =
-    Kernel.Priority a
-
-
 {-| Create an empty `PriorityQueue`.
 -}
-empty : Priority a -> PriorityQueue a
+empty : (a -> Int) -> PriorityQueue a
 empty priority =
     Kernel.empty priority
 
@@ -77,7 +68,7 @@ insert element queue =
 Must be given a `priority` function, i.e. a function that assigns the priority to elements.
 
 -}
-fromList : Priority a -> List a -> PriorityQueue a
+fromList : (a -> Int) -> List a -> PriorityQueue a
 fromList priority elements =
     let
         emptyQueue =
