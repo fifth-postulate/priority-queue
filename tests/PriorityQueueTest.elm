@@ -73,5 +73,18 @@ suite =
                                 |> List.reverse
                     in
                     Expect.equal actual expected
+            , fuzz (list int) "pop is (head, tail)" <|
+                \aList ->
+                    let
+                        queue =
+                            PriorityQueue.fromList negate aList
+
+                        actual =
+                            PriorityQueue.pop queue
+
+                        expected =
+                            ( PriorityQueue.head queue, PriorityQueue.tail queue )
+                    in
+                    Expect.equal actual expected
             ]
         ]

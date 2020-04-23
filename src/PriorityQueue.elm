@@ -1,7 +1,7 @@
 module PriorityQueue exposing
     ( PriorityQueue
     , empty, insert, fromList
-    , head, tail, take, drop, isEmpty
+    , head, tail, pop, take, drop, isEmpty
     , toList
     )
 
@@ -31,7 +31,7 @@ Throughout this package `priority` will mean a function `a -> Int` that assigns 
 
 # Query
 
-@docs head, tail, take, drop, isEmpty
+@docs head, tail, pop, take, drop, isEmpty
 
 
 # Conversion
@@ -164,6 +164,17 @@ would leave a priority queue that contains the rectangles `{ width = 1, height =
 tail : PriorityQueue a -> PriorityQueue a
 tail queue =
     Kernel.tail queue
+
+
+{-| Returns a tuple with the head of a queue and its tail.
+
+    -- For any queue
+    pop queue == ( head queue, tail queue )
+
+-}
+pop : PriorityQueue a -> ( Maybe a, PriorityQueue a )
+pop queue =
+    ( head queue, tail queue )
 
 
 {-| Return the first `n` elements of the `PriorityQueue` with the highest priority
