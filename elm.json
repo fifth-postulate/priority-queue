@@ -3,7 +3,7 @@
     "name": "fifth-postulate/priority-queue",
     "summary": "a priority queue for Elm.",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "exposed-modules": [
         "PriorityQueue"
     ],
